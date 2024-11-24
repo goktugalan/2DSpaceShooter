@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 4f, fireRate;
+    [SerializeField] private float moveSpeed = 4f, fireRate;
     private Animator anim;
-    public GameObject bullets, flash;
+    [SerializeField] private GameObject bullets, flash;
     private float verticalInput;
     private Rigidbody2D playerRb;
-    private int playerLife = 3;
     private bool canShoot = true;
-    public bool attackSpeedBoost;
+    [HideInInspector] public bool attackSpeedBoost;
     private AudioSource playerAudioSource;
-    [SerializeField] AudioClip shootAudio;
-    public Canvas boostTrackCanvas;
+    [SerializeField] private AudioClip shootAudio;
+    [SerializeField] private Canvas boostTrackCanvas;
 
     void Start()
     {
@@ -50,11 +49,10 @@ public class PlayerController : MonoBehaviour
             if(verticalInput == 0 && canShoot == true)
             {
                 StartCoroutine(canShootCoroutine());
-                Vector3 bulletPosition = transform.position;
-                bulletPosition.x += 1.25f;
+                Vector3 bulletPosition = transform.position + new Vector3(1.25f, 0);
                 Instantiate(bullets, bulletPosition, bullets.transform.rotation);
                 playerAudioSource.PlayOneShot(shootAudio);
-                anim.SetTrigger("LetsTry");
+                anim.SetTrigger("Shoot");
                 StartCoroutine(flashActivator());
             }
         }
@@ -102,33 +100,13 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Enemy Bullet") || other.CompareTag("Enemy"))
-        {
-            playerLife -= 1;
-            Destroy(other.gameObject);
-            // VFX SFX ekle
-            if(playerLife <= 0)
-            {
-                // vfx sfx
-                Destroy(gameObject);
-            }
-        }
-        else if(other.CompareTag("Attack Boost") && attackSpeedBoost == false)
+        if(other.CompareTag("Attack Boost"))
         {
             //vfx sfx
             attackSpeedBoost = true;
             boostTrackCanvas.gameObject.SetActive(true);
             StartCoroutine(ResetAttackSpeedBoost());
             Destroy(other.gameObject);
-        }
-        else if(other.CompareTag("HP"))
-        {
-            Destroy(other.gameObject);
-            if(playerLife < 3)
-            {
-                // vfx sfx
-                playerLife += 1;
-            }
         }
     }
 }
