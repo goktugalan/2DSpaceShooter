@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class EnemySpawner : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public List<GameObject> enemies;
 

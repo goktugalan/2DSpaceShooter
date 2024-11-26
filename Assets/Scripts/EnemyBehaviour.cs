@@ -11,14 +11,11 @@ public class EnemyBehaviour : MonoBehaviour
     private float enemyFireRate;
     private Rigidbody2D enemyRb;
     [SerializeField] private GameObject enemyBullet, enemyExplosion, enemyGetHit;
-    private AudioSource audioSource;
-    [SerializeField] private AudioClip explosionSound;
     
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
         gameManager = FindObjectOfType<GameManager>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,7 +55,6 @@ public class EnemyBehaviour : MonoBehaviour
             Instantiate(enemyGetHit, transform.position, Quaternion.identity);
             if(life < 1)
             {
-                audioSource.PlayOneShot(explosionSound);
                 Instantiate(enemyExplosion, transform.position, Quaternion.identity);
                 StartCoroutine(WaitToDestroy());
                 gameManager.totalScore += scoreToAdd;
