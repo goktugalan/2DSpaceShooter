@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy 1
+  - Enemy
+  - Attack Boost
+  - HP
+  - Enemy Bullet
+  - Bullet
+  - Asteroid
   layers:
   - Default
   - TransparentFX

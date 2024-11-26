@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class EnemySpawnerr : MonoBehaviour
 {
     public List<GameObject> enemies;
 
@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public int totalScore;
     [SerializeField] private float enemySpawnRate = 4;
+    private Vector2 asteroidSpawnPos = new Vector2(19, 11);
 
     void Start()
     {
@@ -21,9 +22,17 @@ public class GameManager : MonoBehaviour
     private void SpawnEnemy()
     {
         Vector3 spawnPos = new Vector3(SpawnXPos, Random.Range(-7.5f, 7.5f));
-        int randomIndex = Random.Range(0, enemies.Capacity);
+        int randomIndex = Random.Range(0, enemies.Count);
         GameObject randomEnemyInst = enemies[randomIndex];
-        Instantiate(randomEnemyInst, spawnPos, randomEnemyInst.transform.rotation);
+        if (randomEnemyInst.CompareTag("Enemy 1") || randomEnemyInst.CompareTag("Enemy"))
+        {
+            Instantiate(randomEnemyInst, spawnPos, randomEnemyInst.transform.rotation);
+        }
+        else if (randomEnemyInst.CompareTag("Asteroid"))
+        {
+            Instantiate(randomEnemyInst, asteroidSpawnPos, randomEnemyInst.transform.rotation);
+        }
+        
     }
 
 

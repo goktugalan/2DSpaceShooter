@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class PlayerObjectCollider : MonoBehaviour
 {
-    private int playerLife = 3;
+    public int playerLife = 3;
     [SerializeField] private GameObject getHitVFX;
+    private AudioSource playerAudioSource;
+    [SerializeField] private AudioClip getHitSFX;
 
+    void Start()
+    {
+        playerAudioSource = GetComponent<AudioSource>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Enemy Bullet") || other.CompareTag("Enemy"))
+        if(other.CompareTag("Enemy Bullet") || other.CompareTag("Enemy") || other.CompareTag("Asteroid"))
         {
             playerLife -= 1;
+            Instantiate(getHitVFX, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
-            Instantiate(getHitVFX, transform.position, Quaternion.identity);
+            playerAudioSource.PlayOneShot(getHitSFX);
             // VFX SFX ekle
             if(playerLife <= 0)
             {

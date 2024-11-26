@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 496d2284a996d8647a9e8e5b328406d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -487,15 +487,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83548bbe6fc2f4bc992b529abe3d8f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
   heart: 3
   numOfHearts: 3
   hearts:
   - {fileID: 1816688159}
   - {fileID: 474326132}
   - {fileID: 1397832747}
-  fullHeart: {fileID: 0}
-  emptyHeart: {fileID: 0}
+  fullHeart: {fileID: 21300000, guid: 496d2284a996d8647a9e8e5b328406d9, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 71a398fb187183943944b66fb7e28462, type: 3}
 --- !u!4 &510595861
 Transform:
   m_ObjectHideFlags: 0
@@ -888,12 +887,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 3902967228136528576, guid: 248874999ed305441a47f54705345e69, type: 3}
-  - {fileID: 8877988634905212223, guid: aa32e7df9f68de944b0ff1dfcb90d8eb, type: 3}
   - {fileID: 2089010229840104744, guid: 79b904d0851859949a2dedba8f52464f, type: 3}
+  - {fileID: 2089010229840104744, guid: 79b904d0851859949a2dedba8f52464f, type: 3}
+  - {fileID: 2089010229840104744, guid: 79b904d0851859949a2dedba8f52464f, type: 3}
+  - {fileID: 2089010229840104744, guid: 79b904d0851859949a2dedba8f52464f, type: 3}
+  - {fileID: 2089010229840104744, guid: 79b904d0851859949a2dedba8f52464f, type: 3}
+  - {fileID: 2089010229840104744, guid: 79b904d0851859949a2dedba8f52464f, type: 3}
+  - {fileID: 2089010229840104744, guid: 79b904d0851859949a2dedba8f52464f, type: 3}
+  - {fileID: 2089010229840104744, guid: 79b904d0851859949a2dedba8f52464f, type: 3}
+  - {fileID: 8877988634905212223, guid: aa32e7df9f68de944b0ff1dfcb90d8eb, type: 3}
+  - {fileID: 8877988634905212223, guid: aa32e7df9f68de944b0ff1dfcb90d8eb, type: 3}
+  - {fileID: 8877988634905212223, guid: aa32e7df9f68de944b0ff1dfcb90d8eb, type: 3}
+  - {fileID: 8877988634905212223, guid: aa32e7df9f68de944b0ff1dfcb90d8eb, type: 3}
+  - {fileID: 500547196418763115, guid: 0a28c1194d30cf7468ab55a7a6222ba6, type: 3}
+  - {fileID: 500547196418763115, guid: 0a28c1194d30cf7468ab55a7a6222ba6, type: 3}
+  - {fileID: 500547196418763115, guid: 0a28c1194d30cf7468ab55a7a6222ba6, type: 3}
   scoreText: {fileID: 505161249}
   totalScore: 0
-  enemySpawnRate: 10
+  enemySpawnRate: 3
 --- !u!4 &861796968
 Transform:
   m_ObjectHideFlags: 0
@@ -1142,7 +1153,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: dca552656f4014eb7ae0c6981b4b840e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1207,7 +1218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 496d2284a996d8647a9e8e5b328406d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1392,7 +1403,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3466737180484820205, guid: f3d8cc3516225b74293b55a96488bbb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.75
+      value: -15.8
       objectReference: {fileID: 0}
     - target: {fileID: 3466737180484820205, guid: f3d8cc3516225b74293b55a96488bbb9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1508,7 +1519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 496d2284a996d8647a9e8e5b328406d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1704,7 +1715,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: dca552656f4014eb7ae0c6981b4b840e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

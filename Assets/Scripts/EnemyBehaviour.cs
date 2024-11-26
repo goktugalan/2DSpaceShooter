@@ -6,16 +6,19 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private GameManager gameManager;
+    private EnemySpawnerr gameManager;
     public int speed, life, scoreToAdd;
     private float enemyFireRate;
     private Rigidbody2D enemyRb;
-    [SerializeField] private GameObject enemyBullet, enemyExplosion, enemyGetHit;
+    [SerializeField] private GameObject enemyBullet, enemyExplosion, playerBulletHitVFX;
+    private AudioSource enemyAudioSource;
+    [SerializeField] private AudioClip getHitSFX;
     
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<EnemySpawnerr>();
+        enemyAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,11 +51,12 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Bullet"))
+        if(other.CompareTag("Bullet"))
         {
+            Instantiate(playerBulletHitVFX, other.transform.position, Quaternion.identity);
+            enemyAudioSource.PlayOneShot(getHitSFX);
             Destroy(other.gameObject);
             life -= 1;
-            Instantiate(enemyGetHit, transform.position, Quaternion.identity);
             if(life < 1)
             {
                 Instantiate(enemyExplosion, transform.position, Quaternion.identity);
