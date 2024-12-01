@@ -17,7 +17,7 @@ public class SpawnBoosts : MonoBehaviour
         while (true)
         {
             SpawnBoost();
-            yield return new WaitForSeconds(1f); // Spawns every 1 second (adjust as needed)
+            yield return new WaitForSeconds(7f); // Spawns every 1 second (adjust as needed)
         }
     }
 
