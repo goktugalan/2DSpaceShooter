@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 4f, fireRate;
     private Animator anim;
-    [SerializeField] private GameObject bullets, flash;
+    [SerializeField] private GameObject bullets, flash, playerUltimate;
     private float verticalInput;
     private Rigidbody2D playerRb;
     private bool canShoot = true;
@@ -56,6 +56,18 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(flashActivator());
             }
         }
+        if(Input.GetKey(KeyCode.F) && FindObjectOfType<UltimateBarUI>().currentUltimate == 100)
+        {
+            PlayerUltimate();
+        }
+    }
+
+    private void PlayerUltimate()
+    { 
+        FindObjectOfType<UltimateBarUI>().currentUltimate = 0;
+        FindObjectOfType<UltimateBarUI>().UpdateUltimateBar();
+        FindObjectOfType<UltimateBarUI>().ultReadyText.gameObject.SetActive(false);
+        Instantiate(playerUltimate, transform.position + new Vector3(16, 0), Quaternion.identity);
     }
 
     IEnumerator canShootCoroutine()

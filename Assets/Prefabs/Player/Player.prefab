@@ -201,6 +201,7 @@ MonoBehaviour:
   fireRate: 5
   bullets: {fileID: 7021381673398524854, guid: 78f293b8a58bc0843a5a8e86a02664f8, type: 3}
   flash: {fileID: 7678125849049155621}
+  playerUltimate: {fileID: 7888326433349437744, guid: ac0800a3ad2c9cd42a12f73c1dfadb19, type: 3}
   attackSpeedBoost: 0
   shootAudio: {fileID: 8300000, guid: bb1e1bf51fb0d074da56dac306f76f1d, type: 3}
   boostTrackCanvas: {fileID: 0}

@@ -57,6 +57,7 @@ public class EnemyBehaviour : MonoBehaviour
             enemyAudioSource.PlayOneShot(getHitSFX);
             Destroy(other.gameObject);
             life -= 1;
+            FindObjectOfType<UltimateBarUI>().AddUltimatePoints(10f);
             if(life < 1)
             {
                 Instantiate(enemyExplosion, transform.position, Quaternion.identity);
@@ -64,6 +65,11 @@ public class EnemyBehaviour : MonoBehaviour
                 gameManager.totalScore += scoreToAdd;
                 gameManager.scoreText.text = "Score: " + gameManager.totalScore;
             }
+        }
+
+        else if(other.CompareTag("PlayerUlt"))
+        {
+            Destroy(gameObject);
         }
     }
     IEnumerator WaitToDestroy()

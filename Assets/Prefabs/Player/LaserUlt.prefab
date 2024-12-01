@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7363171416593461016}
   - component: {fileID: 3468888444612800805}
   - component: {fileID: 5566908803619790992}
+  - component: {fileID: 740594930167794979}
   m_Layer: 0
   m_Name: LaserUlt
-  m_TagString: Untagged
+  m_TagString: PlayerUlt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +116,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.005}
@@ -142,3 +143,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &740594930167794979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888326433349437744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79d55b819b824a49a00cb7dae4a1cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
