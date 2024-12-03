@@ -87,7 +87,7 @@ public class EnemyBehaviour : MonoBehaviour
         Destroy(other.gameObject);
 
         life--;
-        FindObjectOfType<UltimateBarUI>()?.AddUltimatePoints(10f);
+        FindObjectOfType<UltimateBarUI>()?.AddUltimatePoints(7f);
 
         if (life <= 0)
         {
