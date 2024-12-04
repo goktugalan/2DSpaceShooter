@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(flashActivator());
             }
         }
-        if(Input.GetKey(KeyCode.F) && FindObjectOfType<UltimateBarUI>().currentUltimate == 100)
+        if(Input.GetKey(KeyCode.F) && FindObjectOfType<UltimateBarUI>().currentUltimate >= 105)
         {
             PlayerUltimate();
         }

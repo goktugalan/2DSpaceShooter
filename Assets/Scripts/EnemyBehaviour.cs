@@ -7,6 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     public int speed = 5;
     public int life = 3;
     public int scoreToAdd = 10;
+    private int maxHealth;
 
     [Header("Components")]
     private Rigidbody2D enemyRb;
@@ -20,6 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private EnemySpawner enemySpawner;
     private KillCountDownerUI killCountDownerUI;
+    private EnemyHealthBar healthBar;
 
     [Header("Shooting")]
     private float enemyFireRate = 2f;
@@ -27,6 +29,8 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         InitializeComponents();
+        maxHealth = life;
+        //healthBar.UpdateHealthBar(life, maxHealth);
     }
 
     void FixedUpdate()
@@ -41,6 +45,7 @@ public class EnemyBehaviour : MonoBehaviour
         enemyAudioSource = GetComponent<AudioSource>();
         enemySpawner = FindObjectOfType<EnemySpawner>();
         killCountDownerUI = FindObjectOfType<KillCountDownerUI>();
+        healthBar = GetComponentInChildren<EnemyHealthBar>();
     }
 
     private void MoveEnemy()
@@ -87,6 +92,7 @@ public class EnemyBehaviour : MonoBehaviour
         Destroy(other.gameObject);
 
         life--;
+        healthBar.UpdateHealthBar(life, maxHealth);
         FindObjectOfType<UltimateBarUI>()?.AddUltimatePoints(7f);
 
         if (life <= 0)
@@ -94,6 +100,7 @@ public class EnemyBehaviour : MonoBehaviour
             HandleEnemyDeath();
         }
     }
+
 
     private void HandlePlayerUltimateHit()
     {
