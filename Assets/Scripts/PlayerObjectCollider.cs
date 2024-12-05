@@ -9,7 +9,6 @@ public class PlayerObjectCollider : MonoBehaviour
     [SerializeField] private GameObject gameOnPanels, gameOffPanels;
     private AudioSource playerAudioSource;
     [SerializeField] private AudioClip getHitSFX;
-    [HideInInspector] public bool gameContinues = true;
 
     void Start()
     {
@@ -34,7 +33,6 @@ public class PlayerObjectCollider : MonoBehaviour
             if(playerLife <= 0)
             {
                 // vfx
-                gameContinues = false;
                 SwitchPanels();
                 Destroy(gameObject);
             }

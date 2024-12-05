@@ -12,16 +12,18 @@ public class EnemySpawner : MonoBehaviour
     public int totalScore;
     [SerializeField] private float enemySpawnRate = 4;
     private Vector2 asteroidSpawnPos = new Vector2(15, 11);
+    private PlayerObjectCollider playerObjectCollider;
 
     void Start()
     {
+        playerObjectCollider = FindAnyObjectByType<PlayerObjectCollider>();
         StartCoroutine(EnemySpawnController());
         scoreText.text = "Shoot!";
     }
 
     private void SpawnEnemy()
     {
-        while (FindObjectOfType<PlayerObjectCollider>().gameContinues)
+        if (playerObjectCollider.playerLife > 0)
         {
             Vector3 spawnPos = new Vector3(SpawnXPos, Random.Range(-7.5f, 7.5f));
             int randomIndex = Random.Range(0, enemies.Capacity);
