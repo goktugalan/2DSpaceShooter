@@ -21,16 +21,19 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Vector3 spawnPos = new Vector3(SpawnXPos, Random.Range(-7.5f, 7.5f));
-        int randomIndex = Random.Range(0, enemies.Capacity);
-        GameObject randomEnemyInst = enemies[randomIndex];
-        if (randomEnemyInst.CompareTag("Enemy 1") || randomEnemyInst.CompareTag("Enemy"))
+        while (FindObjectOfType<PlayerObjectCollider>().gameContinues)
         {
-            Instantiate(randomEnemyInst, spawnPos, randomEnemyInst.transform.rotation);
-        }
-        else if (randomEnemyInst.CompareTag("Asteroid"))
-        {
-            Instantiate(randomEnemyInst, asteroidSpawnPos, randomEnemyInst.transform.rotation);
+            Vector3 spawnPos = new Vector3(SpawnXPos, Random.Range(-7.5f, 7.5f));
+            int randomIndex = Random.Range(0, enemies.Capacity);
+            GameObject randomEnemyInst = enemies[randomIndex];
+            if (randomEnemyInst.CompareTag("Enemy 1") || randomEnemyInst.CompareTag("Enemy"))
+            {
+                Instantiate(randomEnemyInst, spawnPos, randomEnemyInst.transform.rotation);
+            }
+            else if (randomEnemyInst.CompareTag("Asteroid"))
+            {
+                Instantiate(randomEnemyInst, asteroidSpawnPos, randomEnemyInst.transform.rotation);
+            }
         }
     }
 

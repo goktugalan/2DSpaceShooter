@@ -9,7 +9,7 @@ public class BackGroundObjMovement : MonoBehaviour
         transform.Translate(backgroundSpeed, 0, 0 * Time.deltaTime);
         if(transform.position.x <= -32.25f)
         {
-            transform.position = new Vector2(32.25f, 0);
+            transform.position = new Vector2(32.25f, transform.position.y);
         }
     }
 }

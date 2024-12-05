@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private GameObject enemyExplosion;
     [SerializeField] private GameObject playerBulletHitVFX;
     [SerializeField] private AudioClip getHitSFX;
+    [SerializeField] private Slider slider;
 
     private EnemySpawner enemySpawner;
     private KillCountDownerUI killCountDownerUI;
@@ -30,7 +32,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         InitializeComponents();
         maxHealth = life;
-        //healthBar.UpdateHealthBar(life, maxHealth);
+        healthBar.UpdateHealthBar(life, maxHealth);
+        slider.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -77,6 +80,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            EnemyUIBarOpen();
             HandlePlayerBulletHit(other);
         }
         else if (other.CompareTag("PlayerUlt"))
@@ -98,6 +102,14 @@ public class EnemyBehaviour : MonoBehaviour
         if (life <= 0)
         {
             HandleEnemyDeath();
+        }
+    }
+
+    private void EnemyUIBarOpen()
+    {
+        if (!slider.gameObject.activeSelf)
+        {
+            slider.gameObject.SetActive(true);
         }
     }
 

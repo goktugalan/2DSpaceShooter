@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjectSlider : MonoBehaviour
 {
     private Rigidbody2D objectRb;
-    [SerializeField] int objectSpeed;
+    [SerializeField] float objectSpeed;
     private int maxObjectPos = 25;
 
     void Start()

@@ -6,12 +6,20 @@ public class PlayerObjectCollider : MonoBehaviour
 {
     public int playerLife = 3;
     [SerializeField] private GameObject getHitVFX;
+    [SerializeField] private GameObject gameOnPanels, gameOffPanels;
     private AudioSource playerAudioSource;
     [SerializeField] private AudioClip getHitSFX;
+    [HideInInspector] public bool gameContinues = true;
 
     void Start()
     {
         playerAudioSource = GetComponent<AudioSource>();
+    }
+
+    private void SwitchPanels()
+    {
+        gameOnPanels.SetActive(false);
+        gameOffPanels.SetActive(true);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -25,7 +33,9 @@ public class PlayerObjectCollider : MonoBehaviour
             // VFX SFX ekle
             if(playerLife <= 0)
             {
-                // vfx 
+                // vfx
+                gameContinues = false;
+                SwitchPanels();
                 Destroy(gameObject);
             }
         }
