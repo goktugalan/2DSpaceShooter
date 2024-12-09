@@ -9,10 +9,13 @@ public class PlayerObjectCollider : MonoBehaviour
     [SerializeField] private GameObject gameOnPanels, gameOffPanels;
     private AudioSource playerAudioSource;
     [SerializeField] private AudioClip getHitSFX;
+    [HideInInspector] public bool gameEnded = false;
+    private KillCountDownerUI killCountDownerUI;
 
     void Start()
     {
         playerAudioSource = GetComponent<AudioSource>();
+        killCountDownerUI = FindAnyObjectByType<KillCountDownerUI>();
     }
 
     private void SwitchPanels()
@@ -33,6 +36,9 @@ public class PlayerObjectCollider : MonoBehaviour
             if(playerLife <= 0)
             {
                 // vfx
+                killCountDownerUI.SaveHighScore();
+                killCountDownerUI.DisplayEndGameScores();
+                gameEnded = true;
                 SwitchPanels();
                 Destroy(gameObject);
             }

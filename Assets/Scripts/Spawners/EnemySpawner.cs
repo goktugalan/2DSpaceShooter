@@ -8,8 +8,6 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> enemies;
 
     private int SpawnXPos = 18;
-    public TextMeshProUGUI scoreText;
-    public int totalScore;
     [SerializeField] private float enemySpawnRate = 4;
     private Vector2 asteroidSpawnPos = new Vector2(15, 11);
     private PlayerObjectCollider playerObjectCollider;
@@ -18,12 +16,11 @@ public class EnemySpawner : MonoBehaviour
     {
         playerObjectCollider = FindAnyObjectByType<PlayerObjectCollider>();
         StartCoroutine(EnemySpawnController());
-        scoreText.text = "Shoot!";
     }
 
     private void SpawnEnemy()
     {
-        if (playerObjectCollider.playerLife > 0)
+        if (playerObjectCollider.gameEnded == false)
         {
             Vector3 spawnPos = new Vector3(SpawnXPos, Random.Range(-7.5f, 7.5f));
             int randomIndex = Random.Range(0, enemies.Capacity);
@@ -38,7 +35,6 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
-
 
     IEnumerator EnemySpawnController()
     {

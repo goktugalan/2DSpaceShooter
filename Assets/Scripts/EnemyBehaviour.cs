@@ -5,9 +5,8 @@ using UnityEngine.UI;
 public class EnemyBehaviour : MonoBehaviour
 {
     [Header("Enemy Settings")]
-    public int speed = 5;
-    public int life = 3;
-    public int scoreToAdd = 10;
+    private int speed = 5;
+    [SerializeField] private int life = 3;
     private int maxHealth;
 
     [Header("Components")]
@@ -21,9 +20,9 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private AudioClip getHitSFX;
     [SerializeField] private Slider slider;
 
-    private EnemySpawner enemySpawner;
     private KillCountDownerUI killCountDownerUI;
     private EnemyHealthBar healthBar;
+    private PlayerObjectCollider playerObjectCollider;
 
     [Header("Shooting")]
     private float enemyFireRate = 2f;
@@ -46,9 +45,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         enemyRb = GetComponent<Rigidbody2D>();
         enemyAudioSource = GetComponent<AudioSource>();
-        enemySpawner = FindObjectOfType<EnemySpawner>();
         killCountDownerUI = FindObjectOfType<KillCountDownerUI>();
         healthBar = GetComponentInChildren<EnemyHealthBar>();
+        playerObjectCollider = FindObjectOfType<PlayerObjectCollider>(); 
     }
 
     private void MoveEnemy()
@@ -61,7 +60,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (gameObject.CompareTag("Enemy 1") && transform.position.x < 8)
         {
             transform.position = new Vector3(8, transform.position.y, transform.position.z);
-            ShootEnemyBullet();
+            if (playerObjectCollider.gameEnded == false)
+            {
+                ShootEnemyBullet();
+            }
         }
     }
 
@@ -129,10 +131,6 @@ public class EnemyBehaviour : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
-        if (enemySpawner != null)
-        {
-            //enemySpawner.AddScore(scoreToAdd); // Add score using the EnemySpawner's method
-        }
     }
 
     private void UpdateKillCount()

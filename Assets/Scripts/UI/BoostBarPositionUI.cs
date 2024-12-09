@@ -8,6 +8,9 @@ public class BoostBarPositionUI : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1);
+        if(player != null)
+        {
+            transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1);
+        }
     }
 }

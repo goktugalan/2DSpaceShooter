@@ -21,18 +21,18 @@ public class PlayerController : MonoBehaviour
         NeededComponents();
     }
 
-    void NeededComponents()
-    {
-        anim = GetComponent<Animator>();
-        playerRb = GetComponent<Rigidbody2D>();
-        playerAudioSource = GetComponent<AudioSource>();
-    }
-
     void Update()
     {
         PlayerShoot();
         PlayerBorders();
         PlayerMovement();
+    }
+
+    void NeededComponents()
+    {
+        anim = GetComponent<Animator>();
+        playerRb = GetComponent<Rigidbody2D>();
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     private void PlayerMovement()
